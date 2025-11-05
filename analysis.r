@@ -8,29 +8,12 @@ dir.create("data", showWarnings = FALSE)
 dir.create("results", showWarnings = FALSE)
 dir.create("results/figures", showWarnings = FALSE)
 
-# Load inputs:
-# If the original workspace is available locally, use it to create fresh samples
-# and write only the sampled data to /data for reproducibility.
-if (file.exists("project2023.RData")) {
-  load("project2023.RData")  # provides popcanada, popusa, regressiondata
 
-  # Country samples (n = 20 each)
-  x <- sample(popcanada, size = 20, replace = FALSE)
-  y <- sample(popusa,    size = 20, replace = FALSE)
 
-  # Mortality-calcium subsample (n = 25 rows)
-  m1 <- regressiondata[sample(nrow(regressiondata), size = 25), ]
-
-  # Save sampled inputs for reproducible analysis without the original .RData
-  write.csv(data.frame(calcium_canada = x), "data/x_canada.csv", row.names = FALSE)
-  write.csv(data.frame(calcium_usa    = y), "data/y_usa.csv",    row.names = FALSE)
-  write.csv(m1, "data/mortality_calcium_25towns.csv", row.names = FALSE)
-} else {
-  # Use already-saved samples in /data
-  x <- read.csv("data/x_canada.csv")[[1]]
-  y <- read.csv("data/y_usa.csv")[[1]]
-  m1 <- read.csv("data/mortality_calcium_25towns.csv")
-}
+# Use saved samples in /data
+x <- read.csv("data/x_canada.csv")[[1]]
+y <- read.csv("data/y_usa.csv")[[1]]
+m1 <- read.csv("data/mortality_calcium_25towns.csv")
 
 # --- Part A: Compare mean calcium (Canada vs USA) ---------------------------
 # Visual checks (optional in headless runs)
@@ -97,3 +80,4 @@ print(pred40)
 cat("\nSession info:\n")
 print(sessionInfo())
 sink()
+
