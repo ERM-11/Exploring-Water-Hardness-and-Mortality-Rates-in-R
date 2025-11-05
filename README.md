@@ -1,7 +1,9 @@
 # Exploring-Water-Hardness-and-Mortality-Rates-in-R
 A statistical project looking at a sample of data on the annual mortality rate for people in 20 large towns in Canada and 20 similar towns in the USA, and the water hardness recorded as the calcium concentration in the drinking water.
 
-The full dataset was provided through Heriot-Watt University in 2023, and I am using a very small sample from it. The original dataset has not been uploaded, and instead I have uploaded csv files of the sections of data I am using. Three questions are answered while exploring the data:
+The full dataset was provided through Heriot-Watt University in 2023, and I am using a very small sample from it. The original dataset has not been uploaded, and instead I have uploaded csv files of the sections of data I am using.
+
+The 3 questions are answered while exploring the data:
 
 It is first desired to compare the calcium concentration in the drinking water in Canada to that in the USA.
 
