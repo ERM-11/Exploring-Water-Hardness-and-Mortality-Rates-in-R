@@ -6,6 +6,7 @@ set.seed(k)
 dir.create("data", recursive = TRUE, showWarnings = FALSE)
 dir.create("results/figures", recursive = TRUE, showWarnings = FALSE)
 
+# Setting up csv files compiled externally
 need <- c("data/x_canada.csv", "data/y_usa.csv", "data/mortality_calcium_25towns.csv")
 missing <- need[!file.exists(need)]
 if (length(missing)) {
@@ -79,13 +80,13 @@ inside_range <- (40 >= calcium_range[1] && 40 <= calcium_range[2])
 # -------------------------- Report (plain text) ------------------------------
 sink("results/summary.txt"); on.exit(sink(), add = TRUE)
 
-cat("Statistics Project: Water hardness (calcium) and mortality\n")
+cat("Statistics project on Water hardness and mortality\n")
 cat("Author: Ethan Milne   |   k =", k, "\n\n")
 
-cat("Q1. How to obtain random samples (concise plan)\n")
+cat("Q1. How to obtain random samples\n")
 cat(" - Define sampling frame: list of all large towns in Canada and in the USA.\n")
-cat(" - Use simple random sampling to select 20 towns per country, each town equally likely.\n")
-cat(" - Collect drinking-water samples in the same way at each selected town, then assay calcium (parts per million).\n\n")
+cat(" - Use simple random sampling (already done externally) to select 20 towns per country, each town equally likely.\n")
+cat(" - Collect drinking water samples in the same way at each selected town, then measure calcium levels (parts per million).\n\n")
 
 cat("Q2. Compare calcium means in Canada vs USA\n")
 cat("Hypotheses: H0: mu_CAN - mu_USA = 0 ; H1: not equal\n")
@@ -121,11 +122,12 @@ cat(sprintf("  Prediction at calcium = 40 ppm (95%% PI): fit = %.2f, lower = %.2
             pred40[1], pred40[2], pred40[3]))
 cat(sprintf("  Reliability note: 40 ppm is %s the observed calcium range [%.1f, %.1f].\n",
             if (inside_range) "inside" else "outside", calcium_range[1], calcium_range[2]))
-cat("  Predictions are more reliable for towns with calcium within the observed range and when residuals are roughly homoscedastic and normal.\n\n")
+cat("  Predictions are more reliable for towns with calcium within the observed range and when residuals are roughly normal and spread is consistent.\n\n")
 
 cat("Files written:\n")
 cat(" - results/figures/boxplot_calcium_by_country.png\n")
 cat(" - results/figures/scatter_mortality_calcium.png\n")
 cat(" - results/summary.txt\n")
 sink()
+
 
