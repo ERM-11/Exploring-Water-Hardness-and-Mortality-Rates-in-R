@@ -1,0 +1,44 @@
+name: Run R analysis
+
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - analysis.R
+      - data/**
+      - .github/workflows/run-analysis.yml
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'stable'
+
+      - name: Ensure output folders exist
+        run: |
+          mkdir -p results/figures
+
+      - name: Run analysis
+        run: Rscript analysis.R
+
+      - name: Upload results as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: analysis-results
+          path: results/**
+          if-no-files-found: error
+
+      - name: Add summary to run page
+        if: always()
+        run: |
+          echo "### Key outputs" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**First 150 lines of results/summary.txt:**" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          sed -n '1,150p' results/summary.txt >> $GITHUB_STEP_SUMMARY || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
