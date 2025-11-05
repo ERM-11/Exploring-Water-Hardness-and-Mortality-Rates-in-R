@@ -80,8 +80,8 @@ inside_range <- (40 >= calcium_range[1] && 40 <= calcium_range[2])
 # -------------------------- Report (plain text) ------------------------------
 sink("results/summary.txt"); on.exit(sink(), add = TRUE)
 
-cat("Statistics project on Water hardness and mortality\n")
-cat("Author: Ethan Milne   |   k =", k, "\n\n")
+cat("Statistical project investigating water hardness and mortality\n")
+cat("By Ethan Milne   |   k =", k, "\n\n")
 
 cat("Q1. How to obtain random samples\n")
 cat(" - Define sampling frame: list of all large towns in Canada and in the USA.\n")
@@ -129,5 +129,6 @@ cat(" - results/figures/boxplot_calcium_by_country.png\n")
 cat(" - results/figures/scatter_mortality_calcium.png\n")
 cat(" - results/summary.txt\n")
 sink()
+
 
 
