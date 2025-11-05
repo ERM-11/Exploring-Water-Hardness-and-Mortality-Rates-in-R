@@ -1,0 +1,14 @@
+# R session files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+.Renviron
+.Rapp.history
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Original workspace (given by uni)
+project2023.RData
