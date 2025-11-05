@@ -1,0 +1,10 @@
+water-hardness-mortality/
+├─ projanalysis2023.R
+├─ README.md
+├─ .gitignore
+├─ data/
+│  ├─ x_canada.csv
+│  ├─ y_usa.csv
+│  └─ mortality_calcium_25towns.csv
+├─ results/
+└─ results/figures/
