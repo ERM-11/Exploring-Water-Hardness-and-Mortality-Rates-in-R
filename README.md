@@ -12,3 +12,5 @@ It is first desired to compare the calcium concentration in the drinking water i
 2) Perform an appropriate hypothesis test in order to check whether or not the calcium concentration in drinking water is the same in Canada and in the USA. State why you are choosing this test. Make sure you mention your hypothesis, interpretation of p values and a clear conclusion. Also state any assumptions required for your test and justify whether or not they hold.
 
 3) You now wish to investigate the relationship between mortality rate and calcium concentration in drinking water. You focus on 25 different large towns across both countries and measure both these variables. 
+
+[![Build files](https://img.shields.io/badge/Build%20files-download-blue)](../../releases/latest)
